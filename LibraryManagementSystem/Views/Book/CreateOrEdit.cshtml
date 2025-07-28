@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Create/Edit";
+}
+
+@model LibraryManagementSystem.Models.Books
+
+<div class="text-center">
+    <h1 class="display-4">Add New Books</h1>
+
+   </div>
+
+    <form asp-action="CreateOrEdit" asp-controller="Book" method="post">
+        <input hidden class="form-control" type="number" placeholder="0" asp-for="Id" />
+        <label class="mt-4">Name</label>
+        <input class="form-control" type="text" placeholder="Enter book Name" asp-for="Name" />
+
+        <label class="mt-4">AuthorName</label>
+        <input class="form-control" type="text" placeholder="Author Name" asp-for="AuthorName" />
+
+        <label class="mt-4">Publication</label>
+        <input class="form-control" type="text" placeholder="Book Publication" asp-for="Publication" />
+
+        <label class="mt-4">Quantity</label>
+        <input class="form-control" type="number" placeholder="0" asp-for="Quantity" />
+
+        <button class="btn btn-primary mt-4" type="submit">Enter</button>
+
+    </form>
+    

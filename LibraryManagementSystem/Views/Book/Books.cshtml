@@ -1,0 +1,70 @@
+﻿
+@{
+
+    ViewData["Title"] = "Books";
+}
+@model List<Books>
+
+
+<div class="text-center">
+    <h1 class="display-4">Books</h1>
+    <br />
+    <hr />
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    AuthorName
+                </th>
+                <th>
+                    Publication
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var Book in Model)
+                {
+                    <tr>
+                        <td>
+                            @Book.Id
+                        </td>
+                        <td>
+                            @Book.Name
+                        </td>
+                        <td>
+                            @Book.AuthorName
+                        </td>
+                        <td>
+                            @Book.Publication
+                        </td>
+                        <td>
+                            @Book.Quantity
+                        </td>
+
+                        <td>
+                            <a asp-controller="Book" asp-action="CreateOrEdit" asp-route-id="@Book.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+    <a asp-controller="Book" asp-action="Books" class="btn btn-primary">Books</a>
+    <a asp-controller="Book" asp-action="CreateOrEdit" class="btn btn-secondary">Add New Books</a>
+
+</div>
