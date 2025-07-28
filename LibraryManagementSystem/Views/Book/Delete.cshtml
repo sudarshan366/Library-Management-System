@@ -1,0 +1,24 @@
+﻿@model LibraryManagementSystem.Models.Books
+@{
+    ViewData["Title"] = "Books";
+}
+
+
+<h2>Delete Book</h2>
+
+<h3>Are you sure you want to delete this book?</h3>
+
+<div>
+    <strong>Name:</strong> @Model.Name <br />
+    <strong>Author:</strong> @Model.AuthorName <br />
+    <strong>Publication:</strong> @Model.Publication <br />
+    <strong>Quantity:</strong> @Model.Quantity <br />
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Delete</button> |
+    <a asp-action="Index">Cancel</a>
+</form>
+
+
