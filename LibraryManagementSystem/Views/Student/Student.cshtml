@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Student";
+}
+@model List<Student>
+
+<div class="text-center">
+    <h1 class="display-4">Student</h1>
+    <br />
+    <hr />
+    <table>
+        <thead>
+
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Department
+                </th>
+                <th>
+                    Semester
+                </th>
+                <th>
+                    Contact
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var Student in Model)
+                {
+                    <tr>
+                        <td>
+                            @Student.Id
+                        </td>
+                        <td>
+                            @Student.Name
+                        </td>
+                        <td>
+                            @Student.Department
+                        </td>
+                        <td>
+                            @Student.Semester
+                        </td>
+                        <td>
+                            @Student.Contact
+                        </td>
+                        <td>
+                            @Student.Email
+                        </td>
+                        <td>
+                            <a asp-controller="Student" asp-action="CreateEdit" asp-route-id="@Student.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@Student.Id">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+
+            }
+            
+        </tbody>
+    </table>
+    <a asp-controller="Student" asp-action="CreateEdit" class="btn btn-primary">Add New Student</a>
+    
+
+</div>
+
+

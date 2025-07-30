@@ -4,6 +4,7 @@ using LibraryManagementSystem.Models;
 
 namespace LibraryManagementSystem.Controllers
 {
+  
     public class BookController : Controller
     {
         private readonly LibraryContext _context;
@@ -14,9 +15,11 @@ namespace LibraryManagementSystem.Controllers
         }
 
         // READ - List all books
+        [HttpGet]
         public IActionResult Books()
         {
             var books = _context.Books.OrderBy(b => b.Id).ToList();
+           
             return View(books);
         }
         [HttpGet]
@@ -30,7 +33,7 @@ namespace LibraryManagementSystem.Controllers
 
             return View();
         }
-        [HttpPost]
+        
         public IActionResult CreateOrEdit(Books book)
         {
             if (book.Id == 0)
@@ -50,8 +53,14 @@ namespace LibraryManagementSystem.Controllers
 
             return RedirectToAction("Books");
         }
-       
-        
+
+        public IActionResult DeleteBook(int id)
+        {
+
+            var books = _context.Books.SingleOrDefault(books => books.Id == id);
+            _context.Books.Remove(books);
+            return RedirectToAction("Books");
+        }
 
 
     }

@@ -23,12 +23,17 @@
   <ItemGroup>
     <None Remove="Views\Book\" />
     <None Remove="Data\" />
+    <None Remove="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Book\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Book\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" />
   </ItemGroup>
 </Project>

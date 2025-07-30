@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "CreateEdit";
+}
+
+@model LibraryManagementSystem.Models.Student
+
+<div class="text-center">
+    <h1 class="display-4">Add New Student</h1>
+
+</div>
+
+<form asp-action="CreateEdit" asp-controller="Student" method="post">
+    <input hidden class="form-control" type="number" placeholder="0" asp-for="Id" />
+
+    <label class="mt-4">Name</label>
+    <input class="form-control" type="text" placeholder="Enter Student Name" asp-for="Name" />
+
+    <label class="mt-4">Department</label>
+    <input class="form-control" type="text" placeholder="Department" asp-for="Department" />
+
+    <label class="mt-4">Semester</label>
+    <input class="form-control" type="text" placeholder="Semester" asp-for="Semester" />
+
+    <label class="mt-4">Contact</label>
+    <input class="form-control" type="number" placeholder="0" asp-for="Contact" />
+
+    <label class="mt-4">Email</label>
+    <input class="form-control" type="email" placeholder=""Email" asp-for="Email" />
+
+    <button class="btn btn-primary mt-4" type="submit">Enter</button>
+
+</form>

@@ -57,6 +57,7 @@
 
                         <td>
                             <a asp-controller="Book" asp-action="CreateOrEdit" asp-route-id="@Book.Id">Edit</a>
+                            <a asp-action="DeleteBook" asp-route-id="@Book.Id">Delete</a>
                         </td>
                     </tr>
                 }
@@ -64,7 +65,7 @@
             }
         </tbody>
     </table>
-    <a asp-controller="Book" asp-action="Books" class="btn btn-primary">Books</a>
-    <a asp-controller="Book" asp-action="CreateOrEdit" class="btn btn-secondary">Add New Books</a>
+    
+    <a asp-controller="Book" asp-action="CreateOrEdit" class="btn btn-primary">Add New Books</a>
 
 </div>
