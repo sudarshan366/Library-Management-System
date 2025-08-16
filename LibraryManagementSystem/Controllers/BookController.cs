@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.Controllers
 {
@@ -16,11 +17,19 @@ namespace LibraryManagementSystem.Controllers
 
         // READ - List all books
         [HttpGet]
-        public IActionResult Books()
+        public async Task<IActionResult> Books(string searchString)
         {
-            var books = _context.Books.OrderBy(b => b.Id).ToList();
-           
-            return View(books);
+            var books = from b in _context.Books
+                        select b;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(b =>
+            EF.Functions.ILike(b.Name, $"%{searchString}%") ||
+            EF.Functions.ILike(b.AuthorName, $"%{searchString}%"));
+            }
+
+            return View(await books.ToListAsync());
         }
         [HttpGet]
         public IActionResult CreateOrEdit(int? id)
@@ -54,11 +63,29 @@ namespace LibraryManagementSystem.Controllers
             return RedirectToAction("Books");
         }
 
+        [HttpGet]
         public IActionResult DeleteBook(int id)
         {
+            var books = _context.Books.FirstOrDefault(b => b.Id == id);
+            if (books == null)
+            {
+                return NotFound();
+            }
 
-            var books = _context.Books.SingleOrDefault(books => books.Id == id);
-            _context.Books.Remove(books);
+            return View(books);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteBookconfirmed(int id)
+        {
+            var books = _context.Books.Find(id);
+            if (books != null)
+            {
+                _context.Books.Remove(books);
+                _context.SaveChanges();
+            }
+
             return RedirectToAction("Books");
         }
 

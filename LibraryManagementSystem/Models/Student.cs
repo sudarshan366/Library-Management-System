@@ -8,13 +8,13 @@ namespace LibraryManagementSystem.Models
 
         public required string Name { get; set; }
 
-        public string Department { get; set; }
+        public required string Department { get; set; }
 
-        public string Semester { get; set; }
+        public required string Semester { get; set; }
 
-        public string Contact { get; set; }
+        public string? Contact { get; set; }
 
-        public string Email { get; set; }
+        public string? Email { get; set; }
     }
 }
 

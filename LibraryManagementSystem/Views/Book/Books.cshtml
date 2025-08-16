@@ -4,6 +4,15 @@
     ViewData["Title"] = "Books";
 }
 @model List<Books>
+@{
+    var searchValue = Context.Request.Query["searchString"];
+}
+<form asp-controller="Book" asp-action="Books" method="get">
+    <p>
+        Search: <input type="text" name="searchString" value="@searchValue" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
 
 
 <div class="text-center">
@@ -57,7 +66,7 @@
 
                         <td>
                             <a asp-controller="Book" asp-action="CreateOrEdit" asp-route-id="@Book.Id">Edit</a>
-                            <a asp-action="DeleteBook" asp-route-id="@Book.Id">Delete</a>
+                            <a asp-controller="Book" asp-action="DeleteBook" asp-route-id="@Book.Id">Delete</a>
                         </td>
                     </tr>
                 }
@@ -65,7 +74,7 @@
             }
         </tbody>
     </table>
-    
+
     <a asp-controller="Book" asp-action="CreateOrEdit" class="btn btn-primary">Add New Books</a>
 
 </div>

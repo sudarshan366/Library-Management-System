@@ -9,29 +9,38 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.19" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Book\" />
     <None Remove="Data\" />
     <None Remove="Views\Student\" />
+    <None Remove="Microsoft\AspNetCore\Identity\UI\" />
+    <None Remove="Models\ViewModels\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Book\" />
     <Folder Include="Data\" />
     <Folder Include="Views\Student\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="Views\Book\Delete.cshtml" />
+    <Folder Include="Microsoft\AspNetCore\Identity\UI\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />

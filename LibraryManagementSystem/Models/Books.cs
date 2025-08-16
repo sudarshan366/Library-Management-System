@@ -10,14 +10,14 @@ namespace LibraryManagementSystem.Models
 
         public required string Name { get; set; }
 
-		public string AuthorName { get; set; }
+		public required string  AuthorName { get; set; }
 
-		public string Publication { get; set; }
+		public string? Publication { get; set; }
 
-        public string Quantity { get; set; }
+        public required string Quantity { get; set; }
 
+		
 
-
-    }
+	}
 }
 

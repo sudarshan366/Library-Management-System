@@ -2,6 +2,15 @@
     ViewData["Title"] = "Student";
 }
 @model List<Student>
+@{
+    var searchValue = Context.Request.Query["searchString"];
+}
+<form asp-controller="Student" asp-action="Student" method="get">
+    <p>
+        Search: <input type="text" name="searchString" value="@searchValue" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
 
 <div class="text-center">
     <h1 class="display-4">Student</h1>
@@ -65,11 +74,11 @@
                 }
 
             }
-            
+
         </tbody>
     </table>
     <a asp-controller="Student" asp-action="CreateEdit" class="btn btn-primary">Add New Student</a>
-    
+
 
 </div>
 

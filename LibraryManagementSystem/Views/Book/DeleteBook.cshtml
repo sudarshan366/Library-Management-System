@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "DeleteBookconfirmed";
+}
+
+@model LibraryManagementSystem.Models.Books
+
+<div class="text-center">
+    <h1 class="display-4">Delete</h1>
+
+    <h4>
+        Are you Sure you want to delete?
+    </h4>
+
+</div>
+<form asp-action="DeleteBookconfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button> |
+    <a asp-action="Books">Cancel</a>
+</form>
+

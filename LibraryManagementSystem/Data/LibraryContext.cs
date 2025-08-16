@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+
 using LibraryManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,8 @@ namespace LibraryManagementSystem.Data
         public DbSet<Books> Books { get; set; }
 
         public DbSet<Student> Student { get; set; }
+
+        public DbSet<IssueBook> IssueBooks { get; set; } = default!;
 
     }
 }

@@ -1,6 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using LibraryManagementSystem.Data;
 using Microsoft.Extensions.DependencyModel;
+using LibraryManagementSystem.Models;
+using Microsoft.Extensions.Options;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,24 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(Options =>
+{
+    Options.Password.RequireNonAlphanumeric = false;
+    Options.Password.RequiredLength = 8;
+    Options.Password.RequireLowercase = false;
+    Options.Password.RequireUppercase = false;
+    Options.User.RequireUniqueEmail = true;
+    Options.SignIn.RequireConfirmedAccount = false;
+    Options.SignIn.RequireConfirmedEmail = false;
+    Options.SignIn.RequireConfirmedPhoneNumber = false;
+
+})
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 
 var app = builder.Build();

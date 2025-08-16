@@ -22,11 +22,22 @@ namespace LibraryManagementSystem.Controllers
 
         
         [HttpGet()]
-        public IActionResult Student()
+        public async Task<IActionResult> Student(string searchString)
         {
-            var students = _context.Student.OrderBy(b => b.Id).ToList();
-            return View(students);
-            
+            var students = from s in _context.Student
+                           select s;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                // Try to parse the searchString to int (for ID search)
+                bool isNumeric = int.TryParse(searchString, out int idValue);
+
+                students = students.Where(s =>
+                    (isNumeric && s.Id == idValue) ||
+                    EF.Functions.ILike(s.Name, $"%{searchString}%"));
+            }
+
+            return View(await students.ToListAsync());
         }
         [HttpGet]
         public IActionResult CreateEdit(int? id)
